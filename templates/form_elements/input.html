@@ -1,0 +1,7 @@
+<label for="{{ element.id }}">
+    {{ element.name }}
+    {% if element.description %}
+       <br> <small>{{ element.description }}</small>
+    {% endif %}
+    <input type="text" id="{{ element.id }}" name="{{ element.id }}" placeholder="" required>
+</label>

@@ -1,0 +1,5 @@
+{% for element in library.variation_points %}
+    {% if element.type == element.TYPE.CLASS %}
+        {% include 'form_elements/class.html' %}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,23 @@
+<form id="generate-form">
+
+    {% for element in library.variation_points %}
+
+        {% if element.type == element.TYPE.FUNCTION %}
+            {% set form = 'form_elements/' ~ element.form ~'.html' %}
+            {% include form %}
+        {% endif %}
+
+    {% endfor %}
+</form>
+
+
+{% for element in library.variation_points %}
+    {% if element.type == element.TYPE.CLASS %}
+        {% include 'form_elements/class.html' %}
+    {% endif %}
+{% endfor %}
+
+<a id="generate-submit" role="button" href="javascript:"
+   data-url="{{ url_for('generate_lib_execute', lib_id=library.id) }}">Generate</a>
+
+<script src="/static/js/form.js"></script>

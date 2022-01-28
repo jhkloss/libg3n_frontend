@@ -1,0 +1,69 @@
+{% extends 'template.html' %}
+
+{% block body %}
+
+    <h2>{{ library.name }}</h2>
+    <h3>{{ library.path }}</h3>
+
+    <div class="files-display">
+        <div>
+            <article>
+                <header>Files</header>
+
+                <table>
+                    <tbody>
+
+                    {% for directory in directories %}
+                        <tr>
+                            <td><a href="{{ directory }}">{{ directory }}</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    {% for file in files %}
+                        <tr>
+                            <td>{{ file['name'] }}</td>
+                            <td>{{ file['date'] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </article>
+        </div>
+
+        <div>
+            <article>
+                <header>Info</header>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><b>Name:</b> {{ library.name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Author:</b> {{ library.author }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Institution:</b> {{ library.institution }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Files:</b> {{ library.number_of_files }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Version:</b> {{ library.version }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Language:</b> {{ library.language }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article>
+                <header>Options</header>
+                <a class="btn" href="{{ url_for('download_lib', lib_id=library.id) }}" role="button">Download</a>
+                <a class="btn" href="{{ url_for('generate_lib', lib_id=library.id) }}" role="button">Generate</a>
+            </article>
+        </div>
+    </div>
+
+{% endblock %}

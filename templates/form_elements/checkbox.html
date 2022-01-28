@@ -1,0 +1,10 @@
+<fieldset>
+    <label for="{{ element.id }}">
+        <input type="checkbox" id="{{ element.id }}" name="{{ element.id }}" role="switch">
+        {{ element.name }}
+        {% if element.description %}
+            <br><small>{{ element.description }}</small>
+        {% endif %}
+    </label>
+</fieldset>
+

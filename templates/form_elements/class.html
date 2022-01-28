@@ -1,0 +1,19 @@
+<article>
+    <header>
+        {{ element.name }}<br>
+        <small>{{ element.description }}</small>
+        <div style="display: none" class="class-value" data-value="{{ element.id }}"></div>
+    </header>
+    <fieldset class="property-set" data-id="{{ element.id }}" style="display: none">
+        {% for property in element.properties %}
+            {% include 'form_elements/property.html' %}
+        {% endfor %}
+    </fieldset>
+    <footer>
+        <p>Add Properties</p>
+        <input type="text" class="add-property-input" data-id="{{ element.id }}" placeholder="Property name">
+        <a class="add-property-btn outline" role="button" href="javascript:"
+           data-id="{{ element.id }}" data-url="{{ url_for('add_property', fieldset_id=element.id) }}">Add property to {{ element.name }}</a>
+    </footer>
+
+</article>

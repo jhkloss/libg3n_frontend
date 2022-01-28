@@ -1,0 +1,17 @@
+.files-display {
+    display: grid;
+    grid-template-columns: 1fr 0.4fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+}
+
+.btn {
+    margin-top: 0.5em;
+    width: 100%;
+}
+
+.add-btn {
+    color: green !important;
+    border-color: green !important;
+}

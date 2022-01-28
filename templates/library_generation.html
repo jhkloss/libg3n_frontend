@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+
+{% block body %}
+    <article>
+        <header>
+            Generate your customized {{ library.name }} library <br>
+            <small>Version: {{ library.version }}</small>
+        </header>
+        {% include 'variation_form.html' %}
+        <footer>
+            <p>Config File Preview</p>
+            <pre>
+                <code id="generate-preview"></code>
+            </pre>
+        </footer>
+    </article>
+{% endblock %}
