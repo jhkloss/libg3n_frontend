@@ -1,12 +1,13 @@
 import glob
 import os
 import time
+import uuid
 
 import yaml
+
 from libg3n.model.libg3n_library import Libg3nLibrary
-
 from logic.variation_point import VariationPoint
-
+from config.module_config import MODULE_CONFIG
 
 class Library:
 
@@ -62,6 +63,25 @@ class Library:
                 return point
         return None
 
+    def get_library_uid(self):
+        uid = uuid.uuid1()
+        return str(uid)
+
+    def get_library_tmp_directory(self, base_path: str = '', uid: str = '') -> str:
+
+        # Handle custom uid
+        if not uid:
+            uid = self.get_library_uid()
+
+        path = base_path + '/tmp/' + uid
+        os.mkdir(path)
+
+        if os.path.isdir(path):
+            # Add tailing slash
+            return path + '/'
+
+        raise Exception('Could not create output directory!')
+
     def import_lib_config(self):
 
         path = self.path + '/' + self.LIBRARY_CONFIG_FILE_NAME
@@ -86,6 +106,9 @@ class Library:
 
                 if 'language' in config:
                     self.language = config['language']
+
+                    if self.language in MODULE_CONFIG:
+                        self.libg3n_library = MODULE_CONFIG[self.language](self.path)
 
                 if 'variation-points' in config:
 

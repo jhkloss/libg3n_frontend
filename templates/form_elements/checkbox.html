@@ -1,6 +1,6 @@
 <fieldset>
     <label for="{{ element.id }}">
-        <input type="checkbox" id="{{ element.id }}" name="{{ element.id }}" role="switch">
+        <input type="checkbox" class="generate-element" id="{{ element.id }}" name="{{ element.id }}" role="switch">
         {{ element.name }}
         {% if element.description %}
             <br><small>{{ element.description }}</small>

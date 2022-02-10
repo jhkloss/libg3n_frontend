@@ -11,7 +11,7 @@
     </fieldset>
     <footer>
         <p>Add Properties</p>
-        <input type="text" class="add-property-input" data-id="{{ element.id }}" placeholder="Property name">
+        <input type="text" class="add-property-input generate-element" data-id="{{ element.id }}" placeholder="Property name">
         <a class="add-property-btn outline" role="button" href="javascript:"
            data-id="{{ element.id }}" data-url="{{ url_for('add_property', fieldset_id=element.id) }}">Add property to {{ element.name }}</a>
     </footer>

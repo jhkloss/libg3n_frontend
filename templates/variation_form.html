@@ -17,7 +17,9 @@
     {% endif %}
 {% endfor %}
 
+<div id="update-url" data-url="{{ url_for('generate_lib_update', lib_id=library.id) }}"></div>
+
 <a id="generate-submit" role="button" href="javascript:"
-   data-url="{{ url_for('generate_lib_execute', lib_id=library.id) }}">Generate</a>
+   data-url="{{ url_for('generate_lib_download', lib_id=library.id) }}">Generate</a>
 
 <script src="/static/js/form.js"></script>

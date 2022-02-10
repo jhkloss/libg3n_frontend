@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, render_template, abort, request, jsonify
 from logic.home import get_libraries
 from logic.config_generator import ConfigGenerator
@@ -15,15 +13,13 @@ MODULES = {
     'python': PythonLibrary
 }
 
-# Get libraries
 libraries = get_libraries(LIBRARY_BASE_PATH)
 
-generator = ConfigGenerator()
+generator = ConfigGenerator(root_path=app.root_path)
+
 
 @app.route('/')
 def home():  # put application's code here
-    libraries = []
-    libraries = get_libraries(LIBRARY_BASE_PATH)
     return render_template('home.html', libraries=libraries.values())
 
 
@@ -54,13 +50,24 @@ def generate_lib(lib_id: str):
     abort(404)
 
 
-@app.route('/lib/<lib_id>/generate/gen/', methods=['POST'])
-def generate_lib_execute(lib_id: str):
+@app.route('/lib/<lib_id>/generate/update/', methods=['POST'])
+def generate_lib_update(lib_id: str):
 
     if lib_id in libraries:
         lib = libraries[lib_id]
         config_content = generator.parse(lib, request.form)
         return config_content
+
+    abort(404)
+
+
+@app.route('/lib/<lib_id>/generate/download/', methods=['POST'])
+def generate_lib_download(lib_id: str):
+
+    if lib_id in libraries:
+        lib = libraries[lib_id]
+        archive_name, archive_path = generator.generate_library(lib, request.form)
+        return jsonify({'name': archive_name, 'url': archive_path})
 
     abort(404)
 

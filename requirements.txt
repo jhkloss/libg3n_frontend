@@ -1,2 +1,3 @@
-libg3n
-pyyaml
+libg3n~=0.1
+pyyaml~=6.0
+Flask~=2.0.2
