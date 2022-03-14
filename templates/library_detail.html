@@ -42,9 +42,11 @@
                     <tr>
                         <td><b>Author:</b> {{ library.author }}</td>
                     </tr>
-                    <tr>
-                        <td><b>Institution:</b> {{ library.institution }}</td>
-                    </tr>
+                    {% if library.institution %}
+                        <tr>
+                            <td><b>Institution:</b> {{ library.institution }}</td>
+                        </tr>
+                    {% endif %}
                     <tr>
                         <td><b>Files:</b> {{ library.number_of_files }}</td>
                     </tr>
