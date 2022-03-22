@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <link href="/static/css/pico.min.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/icons.css" rel="stylesheet">
 
     <title>Libg3n Frontend</title>
 </head>
 <body>
     <div class="container">
+        <nav>
+            <ul>
+                <li><strong>Libg3n Frontend</strong></li>
+            </ul>
+            <ul>
+                <li><a href="{{ url_for('libs') }}">Libraries</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
         {% block body %}
         {% endblock %}
     </div>

@@ -2,25 +2,22 @@
 
 {% block body %}
 
-    <section id="tables">
-        <h2>Available Libraries</h2>
-        <figure>
-            <table role="grid">
-                <thead>
-                <tr>
-                    <th scope="col">Library</th>
-                    <th scope="col">Version</th>
-                    <th scope="col">Files</th>
-                    <th scope="col">Language</th>
-                </tr>
-                </thead>
+    <p>This web application is an abstraction layer above the libg3n library. The application is build on top the flask framework and is intended to provide a minimal working prototype to show the uses of libg3n.</p>
 
-                <tbody>
-                {% for library in libraries %}
-                    {% include 'library_entry.html' %}
-                {% endfor %}
-                </tbody>
-            </table>
-        </figure>
-    </section>
+    <h4>Technologies</h4>
+        <ul>
+            <li>Python 3.8</li>
+            <li>flask 2.0.2</li>
+            <li>libg3n 0.1</li>
+            <li>pico CSS Framework</li>
+        </ul>
+
+    <h4>libg3n</h4>
+
+    <p>libg3n is a python module designed for the automatic configuration and generation of program libraries. The module systematically searches for variation points which are specified in the program library source files.</p>
+
+    <h4>Motivation</h4>
+
+    <p>This application was developed in the course of the master thesis "Evaluierung von Methoden der Generativen Programmierung zur automatischen Konfiguration von Programmbibliotheken" by Jan Kloß.</p>
+
 {% endblock %}

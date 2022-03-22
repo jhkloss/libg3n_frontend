@@ -17,11 +17,13 @@ libraries = get_libraries(LIBRARY_BASE_PATH)
 
 generator = ConfigGenerator(root_path=app.root_path)
 
-
 @app.route('/')
 def home():  # put application's code here
-    return render_template('home.html', libraries=libraries.values())
+    return render_template('home.html')
 
+@app.route('/lib/')
+def libs():  # put application's code here
+    return render_template('libraries.html', libraries=libraries.values())
 
 @app.route('/lib/<lib_name>/')
 @app.route('/lib/<lib_name>/<path:scope>/')
@@ -30,7 +32,6 @@ def library(lib_name: str, scope: str = ''):  # put application's code here
     if lib_name in libraries:
         lib = libraries[lib_name]
         directories, files = lib.get_file_tree(lib.path + '/' + scope)
-
         return render_template('library_detail.html', library=lib, scope=scope, directories=directories, files=files)
     else:
         abort(404)

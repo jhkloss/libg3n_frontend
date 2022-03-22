@@ -9,9 +9,8 @@ from libg3n.model.libg3n_library import Libg3nLibrary
 from logic.variation_point import VariationPoint
 from config.module_config import MODULE_CONFIG
 
-class Library:
 
-    #constants
+class Library:
 
     LIBRARY_CONFIG_FILE_NAME = 'libconf.yaml'
 
@@ -27,13 +26,12 @@ class Library:
     files: list = []
     number_of_files: int = 0
 
-    variation_points = []
-
     libg3n_library: Libg3nLibrary
 
     def __init__(self, id: str, path: str):
         self.id = id
         self.path = path
+        self.variation_points = []
 
         self.import_lib_config()
 

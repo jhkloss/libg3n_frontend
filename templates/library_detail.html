@@ -1,14 +1,17 @@
 {% extends 'template.html' %}
 
 {% block body %}
-
-    <h2>{{ library.name }}</h2>
-    <h3>{{ library.path }}</h3>
-
     <div class="files-display">
         <div>
             <article>
-                <header>Files</header>
+                <header>
+                    {{ library.name }}
+                    <div style="text-align: right">
+                        <a role="button" href="{{ url_for('generate_lib', lib_id=library.id) }}"><i class="material-icons">engineering</i> Configure</a>
+                        <a role="button" href="{{ url_for('download_lib', lib_id=library.id) }}"><i class="material-icons">download</i> Download</a>
+                    </div>
+
+                </header>
 
                 <table>
                     <tbody>
@@ -60,11 +63,11 @@
                 </table>
             </article>
 
-            <article>
+            {#<article>
                 <header>Options</header>
                 <a class="btn" href="{{ url_for('download_lib', lib_id=library.id) }}" role="button">Download</a>
                 <a class="btn" href="{{ url_for('generate_lib', lib_id=library.id) }}" role="button">Generate</a>
-            </article>
+            </article>#}
         </div>
     </div>
 

@@ -112,6 +112,7 @@ class ConfigGenerator:
                         GeneratorConfigKeys.OUTPUT_DIR: folder_path,
                         GeneratorConfigKeys.CLASS_SUBFOLDER: 'classes',
                         GeneratorConfigKeys.CLASS_PREFIX: 'class_',
+                        GeneratorConfigKeys.COPY_LIBRARY_FILES: True,
                         #GeneratorConfigKeys.SKIP_FUNCTIONS: True
                     }
 

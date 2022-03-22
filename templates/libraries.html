@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+
+{% block body %}
+
+    <section id="tables">
+        <figure>
+            <table role="grid">
+                <thead>
+                <tr>
+                    <th scope="col">Library</th>
+                    <th scope="col">Version</th>
+                    <th scope="col">Files</th>
+                    <th scope="col">Language</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for library in libraries %}
+                    {% include 'library_entry.html' %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </figure>
+    </section>
+{% endblock %}
